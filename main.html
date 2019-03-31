@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="pure-g.css">
+    <link rel="stylesheet" href="TextEditor.css">
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-1-3"></div>
+    <div class="pure-u-1-3 editable">test</div>
+    <div class="pure-u-1-3"><button>Edit</button></div>
+</div>
+
+</body>
+<script src="TextEditor.js"></script>
+<script>
+    let editor = new TextEditor(document.querySelector(".editable"),{
+        // iconColor: "red",
+        // activeIconColor: "red",
+        // editorBgColor: "#ffffff",
+        fontFamily: [
+            {"Arial":"<span style='font-family: Arial'>Arial</span>"},
+            {"Arial Black":"<span style='font-family: Arial Black'>Arial Black</span>"},
+            {"Bookman":"<span style='font-family: Bookman'>Bookman</span>"},
+            {"Comic Sans MS":"<span style='font-family: Comic Sans MS'>Comic Sans MS</span>"},
+            {"Courier":"<span style='font-family: Courier'>Courier</span>"},
+            {"Courier New":"<span style='font-family: Courier New'>Courier New</span>"},
+            {"Garamond":"<span style='font-family: Garamond'>Garamond</span>"},
+            {"Georgia":"<span style='font-family: Georgia'>Georgia</span>"},
+            {"Helvetica":"<span style='font-family: Helvetica'>Helvetica</span>"},
+            {"Impact":"<span style='font-family: Impact'>Impact</span>"},
+            {"Palatino":"<span style='font-family: Palatino'>Palatino</span>"},
+            {"Times":"<span style='font-family: Times'>Times</span>"},
+            {"Times New Roman":"<span style='font-family: Times New Roman'>Times New Roman</span>"},
+            {"Trebuchet MS":"<span style='font-family: Trebuchet MS'>Trebuchet MS</span>"},
+            {"Verdana":"<span style='font-family: Verdana'>Verdana</span>"},
+        ],
+        fontSize: Array.from({length: 50}, (v, k) => k+1)
+    });
+    document.querySelector("button").addEventListener("click",function () {
+        if(this.textContent === "Edit") {
+            document.querySelector(".editable").setAttribute("contenteditable",true);
+            editor.show();
+            this.textContent = "Disable Edit"
+        }
+        else {
+            editor.hide();
+            document.querySelector(".editable").removeAttribute("contenteditable");
+            this.textContent = "Edit";
+        }
+    })
+</script>
+</html>
