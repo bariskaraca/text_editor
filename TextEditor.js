@@ -25,6 +25,15 @@ function TextEditor(target, options) {
         {action: "underline", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
                 '    <path fill="' + this.options.iconColor + '" d="M5,21H19V19H5V21M12,17A6,6 0 0,0 18,11V3H15.5V11A3.5,3.5 0 0,1 12,14.5A3.5,3.5 0 0,1 8.5,11V3H6V11A6,6 0 0,0 12,17Z" />\n' +
                 '</svg>', title: "Underline"},
+        {action: "strikeThrough", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
+                '    <path fill="' + this.options.iconColor + '" d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />\n' +
+                '</svg>', title: "strikeThrough"},
+        {action: "subscript", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
+                '    <path fill="' + this.options.iconColor + '" d="M16,7.41L11.41,12L16,16.59L14.59,18L10,13.41L5.41,18L4,16.59L8.59,12L4,7.41L5.41,6L10,10.59L14.59,6L16,7.41M21.85,21.03H16.97V20.03L17.86,19.23C18.62,18.58 19.18,18.04 19.56,17.6C19.93,17.16 20.12,16.75 20.13,16.36C20.14,16.08 20.05,15.85 19.86,15.66C19.68,15.5 19.39,15.38 19,15.38C18.69,15.38 18.42,15.44 18.16,15.56L17.5,15.94L17.05,14.77C17.32,14.56 17.64,14.38 18.03,14.24C18.42,14.1 18.85,14 19.32,14C20.1,14.04 20.7,14.25 21.1,14.66C21.5,15.07 21.72,15.59 21.72,16.23C21.71,16.79 21.53,17.31 21.18,17.78C20.84,18.25 20.42,18.7 19.91,19.14L19.27,19.66V19.68H21.85V21.03Z" />\n' +
+                '</svg>', title: "subscript"},
+        {action: "superscript", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
+                '    <path fill="' + this.options.iconColor + '" d="M16,7.41L11.41,12L16,16.59L14.59,18L10,13.41L5.41,18L4,16.59L8.59,12L4,7.41L5.41,6L10,10.59L14.59,6L16,7.41M21.85,9H16.97V8L17.86,7.18C18.62,6.54 19.18,6 19.56,5.55C19.93,5.11 20.12,4.7 20.13,4.32C20.14,4.04 20.05,3.8 19.86,3.62C19.68,3.43 19.39,3.34 19,3.33C18.69,3.34 18.42,3.4 18.16,3.5L17.5,3.89L17.05,2.72C17.32,2.5 17.64,2.33 18.03,2.19C18.42,2.05 18.85,2 19.32,2C20.1,2 20.7,2.2 21.1,2.61C21.5,3 21.72,3.54 21.72,4.18C21.71,4.74 21.53,5.26 21.18,5.73C20.84,6.21 20.42,6.66 19.91,7.09L19.27,7.61V7.63H21.85V9Z" />\n' +
+                '</svg>', title: "superscript"},
         {action: "seperator"},
         {action: "fontSize", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
                 '    <path fill="'+this.options.iconColor+'" d="M3,12H6V19H9V12H12V9H3M9,4V7H14V19H17V7H22V4H9Z" />\n' +
@@ -68,10 +77,37 @@ function TextEditor(target, options) {
                         '    <path fill="' + this.options.iconColor + '" d="M3,3H21V5H3V3M9,7H21V9H9V7M3,11H21V13H3V11M9,15H21V17H9V15M3,19H21V21H3V19Z" />\n' +
                         '</svg>'}
             ]},
-        // {action: "seperator"},
-        // {action: "insertLink", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
-        //         '    <path fill="' + this.options.iconColor + '"  d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" />\n' +
-        //         '</svg>', title: "Insert Link", popup: [{type: "text", placeholder: "Link", value: "https://"}, {type: "button", value: "submit"}]},
+        {action: "seperator"},
+        {action: "insertLink", icon: '<svg style="width:18px;height:18px" viewBox="0 0 24 24">\n' +
+                '    <path fill="' + this.options.iconColor + '"  d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" />\n' +
+                '</svg>', title: "Insert Link", popup: [
+                    {type: "text", placeholder: "Link", value: "https://", name: "url"},
+                    {type: "text", placeholder: "Title", value: "", name: "title"},
+                    {type: "text", placeholder: "Text", value: "", name: "text"},
+                    {type: "button", value: "submit", event: (e)=> {
+                            document.querySelector(".insertLink-popup").style.display = "none";
+                            let url = document.querySelector("input[name='url']").value;
+                            let title = document.querySelector("input[name='title']").value;
+                            let _text = document.querySelector("input[name='text']").value;
+                            let text = _text ? _text : url,html;
+                            html = '<a href="' + url + '" target="' + target + '" id="inserted_a" title="'+title+'">' + text.toString() + '</a>';
+                            that.range.deleteContents();
+                            let el = document.createElement("div");
+                            el.innerHTML = html;
+                            let frag = document.createDocumentFragment(), node, lastNode;
+                            while ((node = el.firstChild)) {
+                                lastNode = frag.appendChild(node);
+                            }
+                            that.range.insertNode(frag);
+                            if(that.a_selected) {
+                                that.a_selected.parentNode.appendChild(that.a_selected.querySelector("a.btn"));
+                                that.a_selected.remove();
+                                that.a_selected = false;
+                            }
+                            document.getElementById("inserted_a").removeAttribute("id");
+                        }
+                    }
+                ]},
     ];
     this.getClosest = function (elem, selector) {
         if (!Element.prototype.matches) {
@@ -312,24 +348,20 @@ TextEditor.prototype = {
         return a
     },
     create_input: function(obj){
-        /**
-         * <div class="row">
-         <input type="email" name="email" class="tesodev-control" placeholder=" " required autofocus>
-         <span class="tesodev-floating-label">Email</span>
-         </div>
-         **/
         let div = document.createElement("div");
         div.style.display = "flex";
+        div.style.position = "relative";
         if(obj.type === "button") {
             let button = document.createElement("button");
             button.textContent = obj.value;
-            button.onclick = obj.event;
+            button.addEventListener("click", obj.event);
             div.appendChild(button);
         }
         else {
             let input = document.createElement("input");
             input.setAttribute("type", obj.type);
             input.setAttribute("value", obj.value);
+            input.setAttribute("name", obj.name);
             input.setAttribute("placeholder", " ");
             input.setAttribute("class", "tesodev-control");
             input.setAttribute("required", "required");
@@ -348,7 +380,7 @@ TextEditor.prototype = {
         popup.style.position = "fixed";
         popup.style.flexDirection = "column";
         popup.style.padding = "5px";
-        popup.style.maxHeight = "150px";
+        popup.style.maxHeight = "250px";
         popup.style.overflowY = "scroll";
         popup.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 2px 2px 1px rgba(0,0,0,0.14)";
         popup.setAttribute("class", "editor-popup "+action+"-popup");
@@ -368,6 +400,16 @@ TextEditor.prototype = {
             popup.style.left = a.getBoundingClientRect().left + "px";
             if(!window.getSelection().toString().length)
                 that.target.focus();
+            if (window.getSelection) {
+                that.sel = window.getSelection();
+                if(that.sel.baseNode.parentNode.tagName.toLowerCase()==="a")
+                    that.a_selected=that.sel.baseNode.parentNode;
+                if (that.sel && that.sel.getRangeAt && that.sel.rangeCount) {
+                    that.range = window.getSelection().getRangeAt(0);
+                }
+                that.sel= that.sel.toString();
+                document.querySelector(".insertLink-popup input[name='text']").value=that.sel;
+            }
         });
         return a
     },

@@ -40,6 +40,9 @@
     background-color: #ebebeb;
 }
 
+.editor-popup>div{
+    margin-top: 10px;
+}
 input.tesodev-control {
     border: 0;
     border-bottom: 1px solid #a2a2a2;
