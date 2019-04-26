@@ -33,8 +33,9 @@ IconSelect.prototype = {
         that.searchBar.style.marginBottom="10px";
 
         that.searchInput = document.createElement('input');
-        that.searchInput.style.width="calc(100% - 40px)";
+        that.searchInput.style.width="calc(100% - 20px)";
         that.searchInput.setAttribute("type", "text");
+        that.searchInput.setAttribute("placeholder", "Search icon");
 
         that.boxElement = document.createElement('div');
         that.boxElement.style.display="flex";
